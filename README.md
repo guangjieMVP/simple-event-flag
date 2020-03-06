@@ -41,4 +41,10 @@ void post_event(char *event_name);
 ```c
 void event_handle_loop(void)
 ```
+```c
+while(1)
+{
+    event_handle_loop();		
+}
+```
 
