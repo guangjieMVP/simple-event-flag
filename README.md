@@ -13,38 +13,40 @@ EVENT_EXPORT(event1, ONCE_TYPE, event1)
 ```c
 void event1(void)
 {
-	...
+	/* user code */
 }
 EVENT_EXPORT(event1, ONCE_TYPE, event1);
 ```
 
-* event1 ——事件的名字
+* event1 ——事件的名字(字符串)
 * ONCE_TYPE ——事件类型
 * event1 ——事件处理函数
 
 #### 发布事件
 
+```c
+void publish_event(char *event_name);
 ```
-void post_event(char *event_name);
+
+```c
+publish_event(event1);
 ```
 
-
-
-* event_name ——事件名字
-
-  ```c
-  post_event(event1);
-  ```
-
-  #### 主循环调用
+#### 主循环调用
 
 ```c
 void event_handle_loop(void)
 ```
 ```c
-while(1)
+int main(void)
 {
-    event_handle_loop();		
+    while(1)
+	{
+    	event_handle_loop();		
+	}
+    
+    return 0;
 }
+
 ```
 
