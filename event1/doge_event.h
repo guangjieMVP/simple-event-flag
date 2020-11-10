@@ -1,13 +1,5 @@
-/***********************************************************************
- * @file:        xxx.c
- * @author:      AresXu
- * @version:     v1.00.00
- * @date:        2019-11-xx
- * @brief: 
-***********************************************************************/
-
-#ifndef _EVENT_H_
-#define _EVENT_H_
+#ifndef _DOGE_EVENT_H_
+#define _DOGE_EVENT_H_
 
 
 #if defined(__CC_ARM) || defined(__CLANG_ARM)   /* ARM Compiler */
@@ -37,7 +29,7 @@ typedef struct _event {
     event_handler    handler;
 } event_t;
 
-#define EVENT_EXPORT(event_name,event_type,handler)             \
+#define DOGE_EVENT_EXPORT(event_name,event_type,handler)             \
 	EVENT_USED event_t _##event_name##_event EVENT_SECTION("EVENT_LIST") = \
 	{                                                                    \
 		EVENT_OFF,                                                       \
@@ -46,9 +38,8 @@ typedef struct _event {
 		(event_handler)&handler                                          \
 	};
 
-void event_init(void);
-void publish_event(char *event_name);
-//void close_event(char *event_name);
+void doge_event_init(void);
+void doge_publish_event(char *event_name);
 void event_handle_loop(void);
 void set_eventtype_as_continuous(char *event_name);
 void set_eventtype_as_once(char *event_name);

@@ -1,5 +1,5 @@
 
-#include "event.h"
+#include "doge_event.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -22,7 +22,7 @@ static event_t *_match_event(char *event_name)
 	return NULL;
 }
 
-void event_init(void)
+void doge_event_init(void)
 {
 	event_t *index;
 #if defined(__CC_ARM) || defined(__CLANG_ARM)          /* ARM C Compiler */
@@ -39,7 +39,7 @@ void event_init(void)
 	}
 }
 
-void post_event(char *event_name)
+void doge_publish_event(char *event_name)
 {
 	if(!event_name)
 		return;
@@ -92,9 +92,10 @@ void set_eventtype_as_once(char *event_name)
 	}
 }
 
-void event_handle_loop(void)
+void doge_event_handle_loop(void)
 {
     event_t *index;
+    
     for(index = _event_list_begin; index < _event_list_end; index++)
     {
 		if(index->event_type ==  CONTINUOUS_TYPE)
